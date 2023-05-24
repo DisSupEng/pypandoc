@@ -12,8 +12,10 @@ FROM  python:3.9
 LABEL author  Marc Abramowitz <marc@marc-abramowitz.com>
 # Update apt packages and install pandoc
 RUN apt update && apt upgrade -y && apt install pandoc -y
-# Update pip
-RUN pip install --upgrade pip
+# Update pip and setuptools
+RUN pip install -U pip setuptools
+# Install poetry
+RUN pip install poetry
 
 # Copy the files to container   
 COPY . pypandoc
